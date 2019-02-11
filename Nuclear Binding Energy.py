@@ -41,10 +41,7 @@ def get_element(A, Z):
 
 
 def get_neutrons(elem):
-    try:
-        return int(round(elem.atomic_weight)) - elem.atomic_number
-    except:
-        return int(round(elem.mass)) - elem.atomic_number
+    return int(round(elem.mass)) - elem.atomic_number
 
 
 def amu_to_MeV(x):
@@ -59,13 +56,10 @@ print(amu_to_MeV(binding_energy(ni_62)) / ni_62.mass)
 for i in element(10).isotopes:
     print(i.mass)
 
-'''x = [i for i in range(1,100)]
-a = [element(i).mass for i in x]
-y = [amu_to_MeV(binding_energy(element(i))) / a[i-1] for i in x]
-
-print(np.stack((a, y), axis=-1))
-'''
+x = [i for i in range(1,100)]
+a = [element(i).isotopes[0].mass for i in x]
+y = [amu_to_MeV(binding_energy(element(i).isotopes[0])) / a[i-1] for i in x]
 
 
-#plt.plot(a, y)
-#plt.show()
+plt.scatter(a, y)
+plt.show()
