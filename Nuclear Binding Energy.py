@@ -1,5 +1,5 @@
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from mendeleev import element
 
 mc2_e_MeV = 0.511
@@ -20,10 +20,10 @@ def nuclear_mass(A, Z):
     return get_element(A, Z).mass - (Z*mc2_e_amu)
 
 
-def binding_energy(Z):
-    A=0
-    elem = get_element(A, Z)
-    N = A - Z
+def binding_energy(elem):
+
+    Z = elem.atomic_number
+    N = get_neutrons(elem)
 
     neutrons_mass  = N * mc2_n_amu
     hydrogens_mass = Z * mc2_h_amu
@@ -40,7 +40,32 @@ def get_element(A, Z):
     return element(Z)
 
 
+def get_neutrons(elem):
+    try:
+        return int(round(elem.atomic_weight)) - elem.atomic_number
+    except:
+        return int(round(elem.mass)) - elem.atomic_number
+
+
 def amu_to_MeV(x):
     return x * 931.5
 
-print(amu_to_MeV(binding_energy(3)))
+
+ni_62 = element(28).isotopes[3]
+print(amu_to_MeV(binding_energy(ni_62)) / ni_62.mass)
+
+#ne = element(10).isoto
+
+for i in element(10).isotopes:
+    print(i.mass)
+
+'''x = [i for i in range(1,100)]
+a = [element(i).mass for i in x]
+y = [amu_to_MeV(binding_energy(element(i))) / a[i-1] for i in x]
+
+print(np.stack((a, y), axis=-1))
+'''
+
+
+#plt.plot(a, y)
+#plt.show()
