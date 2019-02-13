@@ -13,6 +13,9 @@ mc2_n_amu = 1.008665
 mc2_h_amu = 1.007825
 
 
+fig, ax = plt.subplots()
+
+
 def nuclear_mass(A, Z):
     return get_element(A, Z).mass - (Z*mc2_e_amu)
 
@@ -56,8 +59,56 @@ y = np.array([amu_to_MeV(binding_energy(i)) for i in s])
 y = y/a
 
 
-plt.scatter(a, y, s=2)
+sc = plt.scatter(a, y, s=2)
 plt.xlabel("A")
 plt.ylabel("Nuclear Binding Energy / Nucleon (A)")
 plt.title("Per Nucleon Binding Energy (PNBE) by Number of Nucleons")
+
+
+
+
+
+
+
+
+annotation = ax.annotate("", xy=(0, 0), xytext=(-20, 20), textcoords="offset points",
+                         bbox=dict(boxstyle="round", fc="w"),
+                         arrowprops=dict(arrowstyle="->"))
+annotation.set_visible(False)
+
+
+def update_annot(ind):
+    annotation.xy = sc.get_offsets()[ind["ind"][0]]
+
+    coords = str(ind['ind']).strip('[]').split()
+    iso = str(s[int(coords[0])]).strip()
+
+    Z    = int(iso.split()[0])
+    A    = int(iso.split()[1])
+    mass = iso.split()[2]
+    N = A - Z
+
+    name = element(Z).name + "-" + str(A) if Z != A else element(Z).name
+
+
+    text = "{}".format(name)
+
+    annotation.set_text(text)
+
+
+def hover(event):
+    vis = annotation.get_visible()
+    if event.inaxes == ax:
+        cont, ind = sc.contains(event)
+        if cont:
+            update_annot(ind)
+            annotation.set_visible(True)
+            fig.canvas.draw_idle()
+        else:
+            if vis:
+                annotation.set_visible(False)
+                fig.canvas.draw_idle()
+
+
+fig.canvas.mpl_connect("motion_notify_event", hover)
 plt.show()
