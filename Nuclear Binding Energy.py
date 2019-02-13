@@ -56,7 +56,7 @@ y = np.array([amu_to_MeV(binding_energy(i)) for i in s])
 y = y/a
 
 
-plt.scatter(a, y)
+plt.scatter(a, y, s=2)
 plt.xlabel("A")
 plt.ylabel("Nuclear Binding Energy / Nucleon (A)")
 plt.title("Per Nucleon Binding Energy (PNBE) by Number of Nucleons")
