@@ -64,12 +64,9 @@ plt.xlabel("A")
 plt.ylabel("Nuclear Binding Energy / Nucleon (A)")
 plt.title("Per Nucleon Binding Energy (PNBE) by Number of Nucleons")
 
-
-
-
-
-
-
+########################################################################################
+#################################   GRAPHING SECTION   #################################
+########################################################################################
 
 annotation = ax.annotate("", xy=(0, 0), xytext=(-20, 20), textcoords="offset points",
                          bbox=dict(boxstyle="round", fc="w"),
@@ -78,8 +75,10 @@ annotation.set_visible(False)
 
 
 def update_annot(ind, click):
+
     annotation.xy = sc.get_offsets()[ind["ind"][0]]
 
+    # attempt to move the box to keep it in window range
     '''x_, y_ = -20, 20
     if annotation.xy[0] > 270:
         x_ = x_ - (40 + (annotation.xy[0] - 270))
@@ -88,6 +87,7 @@ def update_annot(ind, click):
 
     annotation.xytext = (x_, y_)'''
 
+    # retrieve isotope object and index
     coords = str(ind['ind']).strip('[]').split()
     i = int(coords[0])
     iso = str(s[i]).strip()
@@ -128,6 +128,7 @@ def hover(event):
             if vis:
                 annotation.set_visible(False)
                 fig.canvas.draw_idle()
+
 
 def onClick(event):
     vis = annotation.get_visible()
