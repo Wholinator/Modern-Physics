@@ -1,5 +1,5 @@
 ###
-### Classical Definitions of Phsical Transforms
+### Classical Definitions of Physical Transformations
 ### waddup dag
 ###
 

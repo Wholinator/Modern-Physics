@@ -1,5 +1,7 @@
 import numpy as np
-from Relativity import Classical_Transforms as classical
+import matplotlib.pyplot as plt
+from Relativity import Classical_Transforms as Classical
+from Relativity import Relativistic_Transforms as Relative
 
 
 class Observer:
@@ -13,4 +15,5 @@ class Observer:
         self.a = a_i
 
 
-
+print(Relative.vel_add(10000, 10000))
+print(Classical.vel_add(10000, 10000))
