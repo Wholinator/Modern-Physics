@@ -27,6 +27,10 @@ def vel_add(v, u):
     return (v + u) / (1 + (v*u)/(c**2))
 
 
+def momentum(m, v):
+    return m * v * gamma(v)
+
+
 # returns mass energy equivalence in eV
 def mass_energy(m):
     return (m * c**2) / np.abs(q_e)
