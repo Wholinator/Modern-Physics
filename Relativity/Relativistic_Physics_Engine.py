@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from Relativity import Relativistic_Graphing as Graph
 from Relativity import Classical_Transforms as Classical
 from Relativity import Relativistic_Transforms as Relative
 
@@ -15,5 +16,5 @@ class Observer:
         self.a = a_i
 
 
-print(Relative.vel_add(10000, 10000))
-print(Classical.vel_add(10000, 10000))
+print(Relative.vel_add(290000000, 290000000))
+print(Classical.vel_add(290000000, 100000000))
