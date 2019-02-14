@@ -1,5 +1,5 @@
 import numpy as np
-
+from Relativity import Classical_Transforms as classical
 
 
 class Observer:
@@ -11,12 +11,6 @@ class Observer:
         self.vx = vx_i
         self.vy = vy_i
         self.a = a_i
-
-
-
-
-
-
 
 
 
