@@ -1,5 +1,5 @@
 import numpy as np
-from time import perf_counter_ns
+import time
 from Relativity import Relativistic_Graphing as Graph
 from Relativity import Classical_Transforms as Classical
 from Relativity import Relativistic_Transforms as Relative
@@ -34,7 +34,7 @@ class Observer:
 # TODO: vectorize or figure out tensors
 def tick(dt, obs_list):
 
-    dt = dt * 10**-9
+    #dt = dt * 10**-9
 
     for observer in obs_list:
 
@@ -57,15 +57,13 @@ def tick(dt, obs_list):
         Graph.paint(obs_list)
 
 
-Graph.__init__()
-
 observers.append(Observer(10., 10., 10))
 observers.append(Observer(20., 30., 100))
 
-t = perf_counter_ns()
+t = time.perf_counter()
 
 while True:
-    t_ = perf_counter_ns()
+    t_ = time.perf_counter()
 
     tick(t_ - t, observers)
 
