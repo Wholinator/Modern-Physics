@@ -1,3 +1,4 @@
+import numpy as np
 from tkinter import *
 
 canvas_width = 640
@@ -15,8 +16,6 @@ def __init__():
     w.create_rectangle((0, 0, canvas_width, canvas_height), fill="Black")
     w.pack()
 
-    # master.mainloop()
-
 
 def paint(obs_list):
     # clear all canvas items and refill background
@@ -30,19 +29,19 @@ def paint(obs_list):
 
     w.pack()
 
-    master.mainloop()
+    master.update()
 
 
 def convert_coordinates(obs):
     x = obs.x * px_per_m
     y = obs.y * px_per_m
 
-    size = obs.m0 * mass_scaling
+    size = obs.r * mass_scaling
 
     return x, y, x+size, y+size
 
 # converts between window event coords and canvas coords
-#def callback(event):
+# def callback(event):
 #    canvas = event.widget
 #    x = canvas.canvasx(event.x)
 #    y = canvas.canvasy(event.y)
