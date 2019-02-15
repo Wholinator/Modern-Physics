@@ -1,4 +1,3 @@
-import numpy as np
 from tkinter import *
 
 canvas_width = 640
