@@ -1,11 +1,18 @@
-###
-### Relativistic definitions of Physical Transformations
-###
+########################################################
+# Relativistic definitions of Physical Transformations #
+########################################################
 
 import numpy as np
 
 c = 299792458
+
 q_e = -1.6 * 10**-19
+m_e = 9.11 * 10**-31
+mc2_e_mev = 0.511
+
+q_p = 1.6 * 10**-19
+m_p = 1.67 * 10**-27
+mc2_p_mev = 938.27
 
 
 def gamma(u):
@@ -42,3 +49,8 @@ def k_energy(m, v):
 
 def total_energy(m, v):
     return mass_energy(m) * gamma(v)
+
+
+# TODO: figure out the units, man
+def force_to_acceleration(m, f, v):
+    return f / (gamma(v)**3 * m)
