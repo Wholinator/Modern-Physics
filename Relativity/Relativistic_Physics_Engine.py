@@ -25,7 +25,7 @@ class Observer:
 
 
 # TODO: vectorize or figure out tensors
-def tick(delta_t, obs_list):
+def tick(dt, obs_list):
     for observer in obs_list:
 
         fx_i = 0.01
@@ -35,10 +35,10 @@ def tick(delta_t, obs_list):
         ay_new = Relative.force_to_acceleration(observer.mo, fy_i, observer.vy)
 
         # verlet scheme
-        observer.x = observer.x + (observer.vx * delta_t) + ((1 / 2) * observer.ax * delta_t**2)
-        observer.y = observer.y + (observer.vy * delta_t) + ((1 / 2) * observer.ay * delta_t**2)
+        observer.x = observer.x + (observer.vx * dt) + ((1 / 2) * observer.ax * dt**2)
+        observer.y = observer.y + (observer.vy * dt) + ((1 / 2) * observer.ay * dt**2)
 
-        observer.vx = observer.vx + ((1/2) * (ax_new + observer.ax) * delta_t)
-        observer.vy = observer.vy + ((1/2) * (ay_new + observer.ax) * delta_t)
+        observer.vx = observer.vx + ((1/2) * (ax_new + observer.ax) * dt)
+        observer.vy = observer.vy + ((1/2) * (ay_new + observer.ax) * dt)
 
 
