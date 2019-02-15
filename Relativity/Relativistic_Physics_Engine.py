@@ -31,6 +31,9 @@ class Observer:
 
 # TODO: vectorize or figure out tensors
 def tick(dt, obs_list):
+
+    dt = dt * 10**-9
+
     for observer in obs_list:
 
         fx_i = 0.01
@@ -54,8 +57,8 @@ def tick(dt, obs_list):
 
 Graph.__init__()
 
-observers.append(Observer(10, 10, 0, 10))
-observers.append(Observer(20, 30, 0, 10))
+observers.append(Observer(10, 10, 10))
+observers.append(Observer(20, 30, 10))
 
 t = perf_counter_ns()
 

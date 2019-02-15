@@ -1,14 +1,15 @@
 from tkinter import *
 
+canvas_width = 640
+canvas_height = 400
+master = Tk()
+
 px_per_m = 1
 mass_scaling = 1
+w = Canvas()
 
 
 def __init__():
-    master = Tk()
-
-    canvas_width  = 640
-    canvas_height = 400
 
     w = Canvas(master, width=canvas_width, height=canvas_height)
     w.create_rectangle((0, 0, canvas_width, canvas_height), fill="Black")
@@ -30,6 +31,7 @@ def paint(obs_list):
     w.pack()
 
     master.mainloop()
+
 
 def convert_coordinates(obs):
     x = obs.x * px_per_m
