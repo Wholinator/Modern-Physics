@@ -38,8 +38,8 @@ def tick(dt, obs_list):
 
     for observer in obs_list:
 
-        fx_i = 100
-        fy_i = 0
+        fx_i = 20
+        fy_i = 10
 
         ax_new = Relative.force_to_acceleration(observer.m0, fx_i, observer.vx)
         ay_new = Relative.force_to_acceleration(observer.m0, fy_i, observer.vy)
@@ -57,6 +57,11 @@ def tick(dt, obs_list):
         Graph.paint(obs_list)
 
 
+#def gravity(obs_list):
+
+
+# returns center of observer for use of radius calculations
+
 observers.append(Observer(10., 10., 10))
 observers.append(Observer(20., 30., 100))
 
@@ -68,3 +73,5 @@ while True:
     tick(t_ - t, observers)
 
     t = t_
+
+

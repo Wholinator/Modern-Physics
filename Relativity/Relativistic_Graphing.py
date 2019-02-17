@@ -8,6 +8,7 @@ px_per_m = 1
 size_scaling = 10
 w = Canvas(master, width=canvas_width, height=canvas_height)
 
+
 def paint(obs_list):
     # clear all canvas items and refill background
     w.delete("all")
@@ -27,9 +28,9 @@ def convert_coordinates(obs):
     x = obs.x * px_per_m
     y = obs.y * px_per_m
 
-    size = obs.r * size_scaling
+    size = int(obs.r * size_scaling / 2)
 
-    return x, y, x+size, y+size
+    return x-size, y-size, x+size, y+size
 
 # converts between window event coords and canvas coords
 # def callback(event):
