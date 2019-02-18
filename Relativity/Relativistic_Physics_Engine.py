@@ -38,8 +38,9 @@ def tick(dt, obs_list):
 
     for observer in obs_list:
 
-        fx_i = 20
-        fy_i = 10
+        #calculate gravity
+
+        fx_i, fy_i = 10, 0
 
         ax_new = Relative.force_to_acceleration(observer.m0, fx_i, observer.vx)
         ay_new = Relative.force_to_acceleration(observer.m0, fy_i, observer.vy)
@@ -62,8 +63,8 @@ def tick(dt, obs_list):
 
 # returns center of observer for use of radius calculations
 
-observers.append(Observer(10., 10., 10))
-observers.append(Observer(20., 30., 100))
+observers.append(Observer(10., 10., 10, vx_i=100))
+observers.append(Observer(200., 200., 100))
 
 t = time.perf_counter()
 

@@ -12,7 +12,16 @@ def vel_add(v, u):
 
 
 def gravity(obs1, obs2):
-    return g * (obs1.mass * obs2.mass) / distance(obs1, obs2)
+    x = obs1.x - obs2.x
+    y = obs1.y - obs2.y
+
+    theta = np.arctan2(y, x)
+
+    r = distance(obs1, obs2)
+
+    g_mag = g * (obs1.mass * obs2.mass) / r**2
+
+    return g_mag * np.cos(theta), g_mag * np.sin(theta)
 
 
 def distance(obs1, obs2):
