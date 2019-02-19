@@ -39,6 +39,9 @@ def tick(dt, obs_list):
     for observer in obs_list:
 
         #calculate gravity
+        for observer2 in obs_list:
+            if observer2 != observer:
+                print(Classical.gravity(observer, observer2))
 
         fx_i, fy_i = 10, 0
 
@@ -58,7 +61,7 @@ def tick(dt, obs_list):
         Graph.paint(obs_list)
 
 
-#def gravity(obs_list):
+# def gravity(obs_list):
 
 
 # returns center of observer for use of radius calculations
